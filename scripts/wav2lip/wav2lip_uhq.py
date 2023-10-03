@@ -16,7 +16,8 @@ from modules import devices
 class Wav2LipUHQ:
     def __init__(self, face, face_restore_model, mouth_mask_dilatation, erode_face_mask, mask_blur, only_mouth,
                  face_swap_img, resize_factor, code_former_weight, debug=False):
-        self.wav2lip_folder = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1])
+        #self.wav2lip_folder = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1])
+        self.wav2lip_folder = "/home/ubuntu/user_data/a1111/outputs/wav2lip/"
         self.original_video = face
         self.face_restore_model = face_restore_model
         self.mouth_mask_dilatation = mouth_mask_dilatation
