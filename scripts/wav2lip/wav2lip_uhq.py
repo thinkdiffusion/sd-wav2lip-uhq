@@ -16,7 +16,7 @@ from modules import devices
 class Wav2LipUHQ:
     def __init__(self, face, face_restore_model, mouth_mask_dilatation, erode_face_mask, mask_blur, only_mouth,
                  face_swap_img, resize_factor, code_former_weight, debug=False):
-        #self.wav2lip_folder = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1])
+        self.wav2lip_folder_ext = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1])
         self.wav2lip_folder = "/home/ubuntu/user_data/a1111/outputs/wav2lip/"
         self.original_video = face
         self.face_restore_model = face_restore_model
@@ -95,7 +95,7 @@ class Wav2LipUHQ:
         print("[INFO] Loading the predictor...")
         detector = face_detection.FaceAlignment(face_detection.LandmarksType._2D,
                                                 flip_input=False, device=self.device)
-        predictor = dlib.shape_predictor(self.wav2lip_folder + "/predicator/shape_predictor_68_face_landmarks.dat")
+        predictor = dlib.shape_predictor(self.wav2lip_folder_ext + "/predicator/shape_predictor_68_face_landmarks.dat")
         return detector, predictor
 
     def initialize_video_streams(self):
@@ -133,8 +133,8 @@ class Wav2LipUHQ:
 
         frame_number = 0
         if resume:
-            if os.path.exists(self.wav2lip_folder + "/resume.json"):
-                with open(self.wav2lip_folder + "/resume.json", "r") as f:
+            if os.path.exists(self.wav2lip_folder_ext + "/resume.json"):
+                with open(self.wav2lip_folder_ext + "/resume.json", "r") as f:
                     parameters = json.load(f)
                 # Read frame
                 for f in range(parameters["frame"]):
@@ -277,11 +277,11 @@ class Wav2LipUHQ:
 
             if str(frame_number) != max_frame:
                 parameters = {"frame": frame_number}
-                with open(self.wav2lip_folder + "/resume.json", 'w') as f:
+                with open(self.wav2lip_folder_ext + "/resume.json", 'w') as f:
                     json.dump(parameters, f)
             else:
-                if os.path.exists(self.wav2lip_folder + "/resume.json"):
-                    os.remove(self.wav2lip_folder + "/resume.json")
+                if os.path.exists(self.wav2lip_folder_ext + "/resume.json"):
+                    os.remove(self.wav2lip_folder_ext + "/resume.json")
             if self.face_swap_img is None:
                 face_swap_output = None
             else:
