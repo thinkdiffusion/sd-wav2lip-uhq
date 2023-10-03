@@ -11,7 +11,7 @@ from pkg_resources import resource_filename
 
 class W2l:
     def __init__(self, face, audio, checkpoint, nosmooth, resize_factor, pad_top, pad_bottom, pad_left, pad_right, face_swap_img):
-        self.wav2lip_folder = "/home/ubuntu/user_data/a1111/outputs/wav2lip"
+        self.wav2lip_folder = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1])
         self.static = False
         if os.path.isfile(face) and face.split('.')[1] in ['jpg', 'png', 'jpeg']:
             self.static = True
