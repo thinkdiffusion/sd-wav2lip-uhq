@@ -133,8 +133,8 @@ class Wav2LipUHQ:
 
         frame_number = 0
         if resume:
-            if os.path.exists(self.wav2lip_folder_ext + "/resume.json"):
-                with open(self.wav2lip_folder_ext + "/resume.json", "r") as f:
+            if os.path.exists(self.wav2lip_folder + "/resume.json"):
+                with open(self.wav2lip_folder + "/resume.json", "r") as f:
                     parameters = json.load(f)
                 # Read frame
                 for f in range(parameters["frame"]):
@@ -277,11 +277,11 @@ class Wav2LipUHQ:
 
             if str(frame_number) != max_frame:
                 parameters = {"frame": frame_number}
-                with open(self.wav2lip_folder_ext + "/resume.json", 'w') as f:
+                with open(self.wav2lip_folder + "/resume.json", 'w') as f:
                     json.dump(parameters, f)
             else:
-                if os.path.exists(self.wav2lip_folder_ext + "/resume.json"):
-                    os.remove(self.wav2lip_folder_ext + "/resume.json")
+                if os.path.exists(self.wav2lip_folder + "/resume.json"):
+                    os.remove(self.wav2lip_folder + "/resume.json")
             if self.face_swap_img is None:
                 face_swap_output = None
             else:
