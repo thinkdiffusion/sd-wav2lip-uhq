@@ -12,7 +12,7 @@ speaker_id = "v2/en_speaker_0"
 
 def on_ui_tabs():
     wav2lip_uhq_sys_extend()
-    speaker_json = json.load(open("extensions/sd-wav2lip-uhq/scripts/bark/speakers.json", "r"))
+    speaker_json = json.load(open("extensions-builtin/sd-wav2lip-uhq/scripts/bark/speakers.json", "r"))
     speaker_list = [speaker["name"] for speaker in speaker_json if
                     speaker["language"] == "English" and speaker["gender"] == "Male"]
     speaker_language = list(set([speaker["language"] for speaker in speaker_json]))
