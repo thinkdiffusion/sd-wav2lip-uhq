@@ -41,7 +41,7 @@ class FaceSwap:
     def __init__(self, face=None, audio=None, face_index=None, source=None, resize_factor=None, face_restore_model=None, code_former_weight=None):
         self.faceswap_folder = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-1])
         self.wav2lip_folder = os.path.sep.join(os.path.abspath(__file__).split(os.path.sep)[:-2])
-        self.faceswap_output_folder = os.path.join(self.wav2lip_folder, 'wav2lip', 'output', 'faceswap')
+        self.faceswap_output_folder = "/home/ubuntu/user_data/a1111/outputs/wav2lip/output/faceswap"
         self.face = face
         self.audio = audio
         self.source = source
